@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Liberation Library</title>
+  
+  <!--Fonts in use-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <!--MyStylesheet-->
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+  
+</head>
+<body>
+	<div class="hero">
+	
+		<div id="log" class="login">
+			<span class="accent-titleP">Login:</span>
+			<form id="input" method="post" action="" style="margin: 0 5% 0;">
+				<input class="text-field" type="text" placeholder="username">
+					<div class="username-hidden">username</div>
+				</input>
+				<input class="text-field" type="password" placeholder="password">
+					<div class="password-hidden">password</div>
+				</input>
+				<input class="submit" type="submit"></input>
+			</form>
+			<div class="reg-button" onmouseover="reg-little-move">
+				<span class="reg-button-text">Register<span>
+			</div>
+		</div>
+		
+		<div id="reg" class="register">
+			<span class="accent-titleP">Register:</span>
+			<form id="input" method="post" action="" style="margin: 0 5% 0;">
+				<input class="text-field" type="text" placeholder="username">
+					<div class="username-hidden">username</div>
+				</input>
+				<input class="text-field" type="password" placeholder="password">
+					<div class="password-hidden">password</div>
+				</input>
+				<input  class="submit" type="submit"></input>
+			</form>
+		</div>
+		
+	</div>
+	<div class="hero fade" style="height: 250px; width: 100%;"></div>
+	<div class="dividing"></div>
+	<div class="hosting">
+		<div class="top-books">
+			<div class="headB">
+				<span class="accent-titleB">Top Books:</span>
+				<p>Fall into a world of the mystical and lovely with these hand picked tales selected by our finest literary connoisseur.</p>
+			</div>
+			<div class="tail">
+				<div class="blocks">
+					<div class="info">
+						<div class="accent-titleW">Title</div>
+						<div class="description">this is a generic description of a fake book that is not actually in our database<br><br><br></div>
+					</div>
+				</div>
+				<div class="blocks">
+					<div class="info">
+						<div class="accent-titleW">No Title</div>
+						<div class="description">as is this so do not expect anything to be beyond these books and "titles" because there will be nothing besides sadness</div>
+					</div>
+				</div>
+				<div class="blocks">
+					<div class="info">
+						<div class="accent-titleW">Title</div>
+						<div class="description">this is a generic description of a fake book that is not actually in our database<br><br><br></div>
+					</div>
+				</div>
+				<div class="blocks">
+					<div class="info">
+						<div class="accent-titleW">No Title</div>
+						<div class="description">as is this so do not expect anything to be beyond these books and "titles" because there will be nothing besides sadness</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rand-books">
+			<div class="headO">
+				<span class="accent-titleO">Random Selection:</span>
+				<p>For those more adventurous than those faint hearted of us, become engrossed by your new favourite
+				author coming straight from those dustier sections of your local library.</p>
+				<div class="surprise-button">
+					<span class="surprise-button-text">Surprise Me!<span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer inv-fade">
+		
+	</div>
+    <script src="js/index.js"></script>
+	
+	<script>
+	$(window).ready(function(){
+		$(window).resize(function(){
+			$("#reg").removeAttr('style');
+			$("#log").removeAttr('style');
+		});
+		$(".reg-button").hover(function(){
+					if($(window).width() >= 1000){
+						if($("#reg").position().left <= 75){
+							$("#reg").animate({left: '75px'}, 5, 'swing');
+						}
+					}
+					else {
+						if($("#reg").offset().top >= 75){
+							$("#reg").animate({top: '75px'}, 5, 'swing');
+						}
+					}
+			}, function(){
+					if($(window).width() >= 1000){
+						if($("#reg").position().left <= 75){
+							$("#reg").animate({left: '0px'}, 5, 'swing');
+						}
+					}
+					else {
+						if($("#reg").offset().top >= 75){
+							$("#reg").animate({top: '235px'}, 5, 'swing');
+						}
+					}
+		});
+
+		$(".reg-button").click(function(){
+		var $orig_dimen = $(document).width();
+			if($orig_dimen >= 1000){
+				$("#reg").animate({left: '350px'}, 500, 'swing');
+				$("#log").animate({right: '350px'}, 500, 'swing');
+			}
+			else {
+				$("#reg").animate({top: '74px'}, 500, 'swing');
+				$("#log").animate({top: '350px'}, 500, 'swing');
+			}
+		});
+	});
+	</script>
+</body>
+</html>
