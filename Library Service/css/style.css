@@ -23,7 +23,7 @@
 			Extra: #907e68; 'Dirty Brown'
 			*/
 		root {
-		    font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+		  	font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 			font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 		}
 		
@@ -56,6 +56,8 @@
 			position: relative;
 			height: 100%;
 			width: 100%;
+			
+			overflow: hidden;
 			
 			background-image: url("../Photos/holding-book.jpeg");
 			background-attachment: fixed;
@@ -118,6 +120,7 @@
 		#reg{
 			z-index: 9;
 			margin-top: -403px;
+			background: black;
 		}
 		#log{
 			z-index: 10;
@@ -300,12 +303,33 @@
 			top: 180px;
 			left: 50px;
 		}
+		
+		.hide-registry {
+			display: inline-block;
+			position: absolute;
+			min-width: 25px;
+			min-height: 25px;
+			
+			top: 20px;
+			right: 20px;
+			
+			background: #0ebc6e;
+			
+			border-radius: 5px;
+		}
 		/*Main Body Templates*/
 		
 		.hosting {
-		
+			display: block;
+			position: relative;
+			min-height: 1800px;
+			
+			background-color: #f4f7fa;
+			
+			z-index: 11;
 		}
 		
+		/*Body Sections*/		
 		.footer {
 			display: block;
 			position: relative;
@@ -319,44 +343,18 @@
 			background-repeat: no-repeat;
 		}
 		
-		.dividing {
-			display: block;
+		.head{
+			display: inline-block;
 			position: relative;
 			
-			min-height: 100px;
-			width: 100%;
-		}
-		
-		.rand-books {
-			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(16, 91, 148,1) 100%);
-		}
-		
-		.top-books {
-			display: block;
-			position: relative;
-			
-		}
-		
-		.headB, .headG, .headO{
+			top: 50px;
 			padding: 25px 25% 50px;
 		}
 		
 		@media screen and (max-width: 1000px){
-			.headB, .headG, .headO{
+			.headB{
 				padding: 25px 5% 50px;
 			}
-		}
-		
-		.headB{
-			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(16, 91, 148,1) 100%);
-		}
-		
-		.headG{
-			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(14, 188, 110, 1) 100%);
-		}
-		
-		.headO{
-			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(250, 100, 50, 1) 100%);
 		}
 		
 		.tail {
@@ -375,6 +373,7 @@
 			
 			margin: 5px 20px 5px;
 			
+			background-color: black;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -420,4 +419,67 @@
 			
 			margin: 15px 10% 25px;
 			color: #f4f7fa;
+		}
+		
+		.shoutout {
+			display: block;
+			position: relative;
+			top: -50px;
+			background: #f4f7fa;
+			
+			transform: skewY(7deg);
+			transform-origin: right top;
+			
+		}
+		
+		.shoutout-content {
+			display: block;
+			position: absolute;
+			transform: skewY(-7deg);
+			
+			width: 100%;
+			top: -50px;
+		}
+		
+		.top-books {
+			display: block;
+			position: relative;
+			top: -50px;
+			
+			transform: skewY(-14deg);
+			transform-origin: right top;
+			
+			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(16, 91, 148,1) 100%);
+			
+			min-height: 1000px;
+		}
+		
+		.top-books-content {
+			display: block;
+			position: absolute;
+			transform: skewY(7deg);
+			
+			width: 100%;
+			top: 0;
+		}
+		
+		.rand-books {
+			display: block;
+			position: relative;
+			top: 1500px;
+			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(250, 100, 50, 1) 100%);
+			
+			transform: skewY(9deg);
+			transform-origin: right top;
+			
+			min-height: 500px;
+		}
+		
+		.rand-books-content {
+			display: block;
+			position: absolute;
+			transform: skewY(-2deg);
+			
+			width: 100%;
+			top: 0;
 		}

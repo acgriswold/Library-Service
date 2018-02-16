@@ -36,6 +36,7 @@
 		
 		<div id="reg" class="register">
 			<span class="accent-titleP">Register:</span>
+			<div class="hide-registry"></div>
 			<form id="input" method="post" action="" style="margin: 0 5% 0;">
 				<input class="text-field" type="text" placeholder="username">
 					<div class="username-hidden">username</div>
@@ -48,54 +49,70 @@
 		</div>
 		
 	</div>
-	<div class="hero fade" style="height: 250px; width: 100%;"></div>
-	<div class="dividing"></div>
+	
 	<div class="hosting">
-		<div class="top-books">
-			<div class="headB">
-				<span class="accent-titleB">Top Books:</span>
-				<p>Fall into a world of the mystical and lovely with these hand picked tales selected by our finest literary connoisseur.</p>
+		<div class="shoutout">
+			<div class="shoutout-content">
+				<p style="color: white; font-size: 100px;">LOGO</p>
 			</div>
-			<div class="tail">
-				<div class="blocks">
-					<div class="info">
-						<div class="accent-titleW">Title</div>
-						<div class="description">this is a generic description of a fake book that is not actually in our database<br><br><br></div>
+			<!--end shoutout-content-->
+			<div class="top-books">
+			
+				<div class="top-books-content">
+					<div class="head">
+					<span class="accent-titleB">Top Books:</span>
+					<p>Fall into a world of the mystical and lovely with these hand picked tales selected by our finest literary connoisseur.</p>
+					</div>
+					
+					<div class="tail">
+					<div class="blocks">
+						<div class="info">
+							<div class="accent-titleW">Title</div>
+							<div class="description">this is a generic description of a fake book that is not actually in our database<br><br><br></div>
+						</div>
+					</div>
+					<div class="blocks">
+						<div class="info">
+							<div class="accent-titleW">No Title</div>
+							<div class="description">as is this so do not expect anything to be beyond these books and "titles" because there will be nothing besides sadness</div>
+						</div>
+					</div>
+					<div class="blocks">
+						<div class="info">
+							<div class="accent-titleW">Title</div>
+							<div class="description">this is a generic description of a fake book that is not actually in our database<br><br><br></div>
+						</div>
+					</div>
+					<div class="blocks">
+						<div class="info">
+							<div class="accent-titleW">No Title</div>
+							<div class="description">as is this so do not expect anything to be beyond these books and "titles" because there will be nothing besides sadness</div>
+						</div>
 					</div>
 				</div>
-				<div class="blocks">
-					<div class="info">
-						<div class="accent-titleW">No Title</div>
-						<div class="description">as is this so do not expect anything to be beyond these books and "titles" because there will be nothing besides sadness</div>
-					</div>
+				<!--end top-books-content-->
 				</div>
-				<div class="blocks">
-					<div class="info">
-						<div class="accent-titleW">Title</div>
-						<div class="description">this is a generic description of a fake book that is not actually in our database<br><br><br></div>
+				<div class="rand-books">
+					<div class="rand-books-content">
+						<div class="head">
+							<span class="accent-titleO">Random Selection:</span>
+							<p>For those more adventurous than those faint hearted of us, become engrossed by your new favourite
+							author coming straight from those dustier sections of your local library.</p>
+							<div class="surprise-button">
+								<span class="surprise-button-text">Surprise Me!<span>
+							</div>
+						</div>
 					</div>
+					<!--end rand-books-content-->
 				</div>
-				<div class="blocks">
-					<div class="info">
-						<div class="accent-titleW">No Title</div>
-						<div class="description">as is this so do not expect anything to be beyond these books and "titles" because there will be nothing besides sadness</div>
-					</div>
-				</div>
+				<!--end rand-books-->
 			</div>
+			<!--end top-books-->
 		</div>
-		<div class="rand-books">
-			<div class="headO">
-				<span class="accent-titleO">Random Selection:</span>
-				<p>For those more adventurous than those faint hearted of us, become engrossed by your new favourite
-				author coming straight from those dustier sections of your local library.</p>
-				<div class="surprise-button">
-					<span class="surprise-button-text">Surprise Me!<span>
-				</div>
-			</div>
-		</div>
+		<!--end shoutout-->
 	</div>
-	<div class="footer inv-fade">
-		
+	<!--end hosting-->
+	<div class="footer">
 	</div>
     <script src="js/index.js"></script>
 	
@@ -105,6 +122,11 @@
 			$("#reg").removeAttr('style');
 			$("#log").removeAttr('style');
 		});
+		$(".hide-registry").click(function(){
+			$("#reg").removeAttr('style');
+			$("#log").removeAttr('style');
+		});
+		
 		$(".reg-button").hover(function(){
 					if($(window).width() >= 1000){
 						if($("#reg").position().left <= 75){
@@ -112,8 +134,8 @@
 						}
 					}
 					else {
-						if($("#reg").offset().top >= 75){
-							$("#reg").animate({top: '75px'}, 5, 'swing');
+						if($("#reg").offset().top >= 163.5){
+							$("#reg").animate({top: '163.5px'}, 5, 'swing');
 						}
 					}
 			}, function(){
@@ -123,8 +145,8 @@
 						}
 					}
 					else {
-						if($("#reg").offset().top >= 75){
-							$("#reg").animate({top: '235px'}, 5, 'swing');
+						if($("#reg").offset().top >= 163.5){
+							$("#reg").animate({top: '238.5px'}, 5, 'swing');
 						}
 					}
 		});
@@ -136,8 +158,8 @@
 				$("#log").animate({right: '350px'}, 500, 'swing');
 			}
 			else {
-				$("#reg").animate({top: '74px'}, 500, 'swing');
-				$("#log").animate({top: '350px'}, 500, 'swing');
+				$("#reg").animate({top: '162.5px'}, 500, 'swing');
+				$("#log").animate({top: '1000px'}, 500, 'swing');
 			}
 		});
 	});
