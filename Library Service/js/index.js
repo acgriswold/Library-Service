@@ -9,5 +9,5 @@ $(window).scroll(function() {
     } else {
         $header.removeClass('animated').addClass('fix');
     }
-  
+
 });

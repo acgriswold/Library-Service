@@ -1,64 +1,65 @@
 /*Depths Map:
 			Login: 	  10
 			Register: 9
-			
+
 		  Colors Map:
-			Accent-Text-Varient1:      #0ebc6e;  'Green'
+
+			Main-Background-Varient2:  #f4f7fa;  'White' or rgba(244, 247, 250, 1)
+
+			Online Palette Used:
+			http://colorpalettes.net/color-palette-3672
+
+			Obsolete Palette:
+			Accent-Text-Varient1:      #9eb99a;  'Green'
 			Accent-Text-Varient2:      #dc6432;  'Orange'
 			Accent-Text-Varient3:      #105b94;  'Blue'
 			Accent-Text-Varient4:      #e93f81;  'Pink'
-			
-			Main-Text: 			       #190e17;  'Black'
-			
+
+			Main-Background:	       #190e17;  'Black-Purple'
+			Mono Crom on Above:		   #4a2944;  'Purple'
+
 			Main-Background-Varient1:  #e3dce3;  'White-Grey' or rgba(227, 220, 227, 1)
-			Main-Background-Varient2:  #f4f7fa;  'White' or rgba(244, 247, 250, 1)
-			
-			Online Palette:
-			Background: #ffe7d2; 'Light Brown'
-			
-			Accent-Text: #c36041; 'Dark Brown'
-			Lighter-Text: #ffa068; 'Orange Brown'
-			Main-Text: #181216; 'Black'
-			
-			Extra: #907e68; 'Dirty Brown'
+
 			*/
 		root {
-		  	font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+		  font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 			font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 		}
-		
+
 		body, html {
 			margin: 0;
 			padding: 0;
 			background-color: #f4f7fa;
 			font-family: Helvetica Neue, Helvetica, Open sans, Arial, sans-serif;
-			font-weight:lighter;
-			letter-spacing:1px;
-		
+			font-weight: lighter;
+			letter-spacing: 1px;
+
 			display: block;
-			
+
 			height: 100%;
-			width: 100%;
+			max-width: 100%;
+			overflow-x: hidden;
 		}
-		
+
 		p {
 			font-size: 20px;
 			font-family: Helvetica Neue, Helvetica, Open sans, Arial, sans-serif;
 			font-weight: 10;
 			line-height: 1.5;
-			
+
 			margin: 15px 50px 25px;
 			color: #f4f7fa;
 		}
-		
+
 		.hero {
 			display: block;
 			position: relative;
 			height: 100%;
 			width: 100%;
-			
+
+
 			overflow: hidden;
-			
+
 			background-image: url("../Photos/holding-book.jpeg");
 			background-attachment: fixed;
 			background-size: cover;
@@ -66,420 +67,460 @@
 			background-repeat: no-repeat;
 		}
 
-		.fade::before {
-			position: absolute;
-			content: "";
-			
-			min-width: 100%;
-			min-height: 100%;
-				
-			top: 0;
-			left: 0;
-			
-			background: linear-gradient(rgba(244, 247, 250, 0) 65%, rgba(244, 247, 250, 1) 100%);
-		}
-		
-		.inv-fade::before {
-			position: absolute;
-			content: "";
-			
-			min-width: 100%;
-			min-height: 100%;
-				
-			top: 0;
-			left: 0;
-			
-			background: linear-gradient(rgba(244, 247, 250, 1) 0, rgba(244, 247, 250, 0) 35%);
-		}
-		
 		.login, .register {
 			position: relative;
 			margin: auto;
-			
+
 			padding: 10px 15px 10px;
 			border-radius: 15px;
-			
+
 			top: 25%;
 			/*2.1 ratio
 			quarter of screen
 			950px
 			434px
 			*/
-			width: 650px; 
+			width: 650px;
 			height: 383px;
-			
-			background: #f4f7fa;
-			
-			box-shadow: 15px 15px #e93f81;
-			
+
 			webkits-transition: .3s all ease-in-out;
 			o-transition: .3s all ease-in-out;
 			transition: .3s all ease-in-out;
 		}
-		
+
 		#reg{
 			z-index: 9;
+			background: #9aadc2;
 			margin-top: -403px;
-			background: black;
+
 		}
 		#log{
 			z-index: 10;
+			background: #dfe1df;
+			box-shadow: 3px 3px 25px #000;
 		}
-		
-		.accent-titleP, .accent-titleB, .accent-titleO, .accent-titleG, .accent-titleW {
+
+		.accent-titleP, .accent-titleB, .accent-titleO, .accent-titleG, .accent-titleW, .accent-titlePu, .accent-titleBl {
 			font-size: 40px;
 			font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 			font-weight: 700;
 			text-transform: capitalize;
 			letter-spacing: 1px;
 		}
-		
+
+		.accent-titleBl {
+			color: #393d45;
+		}
+		.accent-titlePu {
+			color: #4a2944;
+		}
 		.accent-titleP {
 			color: #e93f81;
 		}
-		
+
 		.accent-titleB {
-			color: #105b94;
+			color: #9aadc2;
 		}
-		
+
 		.accent-titleO {
 			color: #dc6432;
 		}
-		
+
 		.accent-titleG {
-			color: #0ebc6e;
+			color: #9eb99a;
 		}
-		
+
 		.accent-titleW {
-			color: #f4f7fa;
+			color: #dfe1df;
 		}
-		
+
 		/*Buttons & Inputs*/
 		.submit {
 			background: #105b94;
 			border: 1px solid #105b94;
 			border-radius: 360px;
-			
-			color: #f4f7fa;
+
+			color: #dfe1df;
 			font-size: 12px;
 			font-family: Helvetica Neue, Helvetica, Open sans, Arial, sans-serif;
 			font-weight: 400;
 			text-transform: uppercase;
 			letter-spacing: 1px;
-			
+
 			cursor: pointer;
-			
+
 			padding: 10px 32px 10px;
 		}
-		
+
 		.reg-button, .surprise-button {
 			display: block;
 			box-sizing: border-box;
 			position: relative;
-			
+
 			border-radius: 360px;
 			background: transparent;
-			
+
 			text-align: center;
 			padding: 10px 25px 10px;
-			
+
 			cursor: pointer;
-			
+
 			webkits-transition: .3s all ease-in-out;
 			o-transition: .3s all ease-in-out;
 			transition: .3s all ease-in-out;
 		}
-		
+
 		.reg-button-text, .surprise-button-text {
 			display: block;
 			position: relative;
-			
+
 			font-size: 18px;
 			font-family: Helvetica Neue, Helvetica, Open sans, Arial, sans-serif;
 			font-weight: 600;
 			text-transform: uppercase;
 			letter-spacing: 1px;
-			
+
 			webkits-transition: .3s all ease-in-out;
 			o-transition: .3s all ease-in-out;
 			transition: .3s all ease-in-out;
 		}
-		
+
 		.reg-button-text {
-			color: #e93f81;
+			color: #9aadc2;
 		}
-		
+
 		.surprise-button-text {
-			color: #dc6432;
+			color: #393d45;
 		}
-		
+
 		.reg-button {
-			border: 2px solid #e93f81;
+			border: 2px solid #9aadc2;
 			position: absolute;
-			
+
 			width: 25%;
 			bottom: 25px;
 			right: 25px;
 		}
-		
-		.surprise-button {			
-			border: 2px solid #dc6432;
-			
+
+		.surprise-button {
+			border: 2px solid #393d45;
+
 			padding: 25px 30px 25px;
 			width: 50%;
 			margin: auto;
 		}
-		
+
 		.reg-button:hover {
-			background: #e93f81;
+			background: #9aadc2;
+			box-shadow: 2px 2px 25px #000;
 		}
-		
+
 		.reg-button:hover .register {
 			margin-top: 0;
 		}
-		
+
 		.surprise-button:hover {
-			background: #dc6432;
+			background: #393d45;
+			box-shadow: 2px 2px 25px #000;
 		}
-		
+
 		.reg-button:hover .reg-button-text, .surprise-button:hover .surprise-button-text{
-			color: #f4f7fa;
+			color: #dfe1df;
 		}
-		
+
 		.text-field{
 			display: block;
 			position: relative;
 			background: none;
-			
+
 			width: 75%;
 			margin: 25px 0 35px;
 			padding: 5px 0 3px;
-			
+
 			color: #190e17;
-			
+
 			border: 2px solid;
 			border-color: transparent transparent lightgrey transparent ;
-			
+
 			font-size: 25px;
 		}
-		
+
 		.text-field:focus {
 			outline: 0; !important;
 		}
-		
+
 		.text-field:focus + .username-hidden {
 			top: 80px;
 			opacity: 1;
 			z-index: 0;
 		}
-		
+
 		.text-field:focus + .password-hidden {
 			top: 155px;
 			opacity: 1;
 			z-index: 0;
 		}
-		
+
 		.username-hidden, .password-hidden {
 			display: block;
 			position: absolute;
-			
+
 			color: #105b94;
 			font-weight: 300;
-			
+
 			z-index: -1;
 			opacity: 0;
-			
+
 			webkits-transition: .3s all ease-in-out;
 			o-transition: .3s all ease-in-out;
 			transition: .3s all ease-in-out;
 		}
-		
+
 		.username-hidden {
 			top: 100px;
 			left: 50px;
 		}
-		
+
 		.password-hidden {
 			top: 180px;
 			left: 50px;
 		}
-		
+
 		.hide-registry {
 			display: inline-block;
 			position: absolute;
 			min-width: 25px;
 			min-height: 25px;
-			
+
+			cursor: pointer;
+
 			top: 20px;
 			right: 20px;
-			
-			background: #0ebc6e;
-			
+
+			background: #9eb99a;
+
 			border-radius: 5px;
+
+			webkits-transition: .3s all ease-in-out;
+			o-transition: .3s all ease-in-out;
+			transition: .3s all ease-in-out;
+		}
+
+		.hide-registry:hover {
+			box-shadow: 2px 2px 25px #000;
 		}
 		/*Main Body Templates*/
-		
+
 		.hosting {
 			display: block;
 			position: relative;
-			min-height: 1800px;
-			
-			background-color: #f4f7fa;
-			
+
+			background-color: black;
+			box-shadow: 3px 3px 25px #000;
+
 			z-index: 11;
 		}
-		
-		/*Body Sections*/		
+
+		.post-hosting {
+			display: block;
+			position: relative;
+
+			background-image: url("../Photos/group-reading.jpeg");
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+
+			z-index: 10;
+		}
+
+		/*Body Sections*/
 		.footer {
 			display: block;
 			position: relative;
-			height: 500px;
+			height: 700px;
 			width: 100%;
-			
-			background-image: url("../Photos/hero-colorful.jpg");
+
+			background-image: url("../Photos/greyscale-book-multiple.jpeg");
 			background-attachment: fixed;
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
 		}
-		
+
 		.head{
 			display: inline-block;
 			position: relative;
-			
+
 			top: 50px;
 			padding: 25px 25% 50px;
 		}
-		
+
 		@media screen and (max-width: 1000px){
-			.headB{
+			.head{
 				padding: 25px 5% 50px;
 			}
 		}
-		
+
 		.tail {
 			padding: 25px 5% 50px;
 			margin: 0 5% 0;
 		}
-		
+
 		.blocks {
 			display: inline-block;
 			box-sizing: border-box;
-			
+
 			width: 325px;
 			height: 450px;
-			
+
 			border-radius: 15px;
-			
+			box-shadow: 3px 3px 25px #000;
+
 			margin: 5px 20px 5px;
-			
+
 			background-color: black;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
 		}
-		
+
 		.blocks:nth-child(1){
 			background-image: url("../Photos/stairs-reading.jpeg");
 		}
-		
+
 		.blocks:nth-child(2){
 			background-image: url("../Photos/leaf-book.jpg");
 		}
-		
+
 		.blocks:nth-child(3){
 			background-image: url("../Photos/electronic-book.jpeg");
 		}
-		
+
 		.blocks:nth-child(4){
 			background-image: url("../Photos/green-book.jpeg");
 		}
-		
+
 		.blocks .info {
 			display: block;
 			position: relative;
-			
+
 			text-shadow: 3px 3px 10px #190e17;
-			
+
 			margin: auto;
 			padding: 5px 5px 5px;
 			top: 17.5%;
-			
+
 			height: 65%;
 			width: 60%;
-			
+
 			background: transparent;
 		}
-		
+
 		.description {
 			font-size: 15px;
 			font-family: Helvetica Neue, Helvetica, Open sans, Arial, sans-serif;
 			font-weight: 100;
 			line-height: 1.25;
-			
+
 			margin: 15px 10% 25px;
-			color: #f4f7fa;
+			color: #dfe1df;
 		}
-		
+
 		.shoutout {
 			display: block;
 			position: relative;
 			top: -50px;
-			background: #f4f7fa;
-			
+			background: #dfe1df;
+
 			transform: skewY(7deg);
 			transform-origin: right top;
-			
+
+			box-shadow: 3px 3px 25px #000;
 		}
-		
+
 		.shoutout-content {
 			display: block;
 			position: absolute;
 			transform: skewY(-7deg);
-			
+
+			padding: 20px 10px 0;
+
 			width: 100%;
 			top: -50px;
 		}
-		
+
+		.shoutout-content img{
+			max-height: 300px;
+			max-width: 300px;
+		}
+
+		@media screen and (max-width: 1000px){
+			.shoutout-content img{
+				max-height: 125px;
+				max-width: 125px;
+			}
+		}
+
 		.top-books {
 			display: block;
 			position: relative;
 			top: -50px;
-			
+
 			transform: skewY(-14deg);
 			transform-origin: right top;
-			
-			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(16, 91, 148,1) 100%);
-			
+
+			background: #caac91;/*linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(16, 91, 148,1) 100%);*/
+			box-shadow: 3px 3px 25px #000;
+
 			min-height: 1000px;
 		}
-		
+
 		.top-books-content {
 			display: block;
 			position: absolute;
 			transform: skewY(7deg);
-			
+
 			width: 100%;
 			top: 0;
 		}
-		
+
 		.rand-books {
 			display: block;
 			position: relative;
-			top: 1500px;
-			background: linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(250, 100, 50, 1) 100%);
-			
-			transform: skewY(9deg);
+			top: 300px;
+			background: #566775;/*linear-gradient(135deg, rgba(25, 14, 23, 1) 0, rgba(250, 100, 50, 1) 100%);*/
+			box-shadow: 3px 3px 25px #000;
+
+			transform: skewY(2deg);
 			transform-origin: right top;
-			
+
 			min-height: 500px;
 		}
-		
+
 		.rand-books-content {
 			display: block;
 			position: absolute;
 			transform: skewY(-2deg);
-			
+
 			width: 100%;
 			top: 0;
+		}
+
+		/*splitters*/
+		.divide {
+			z-index: 10;
+			display: block;
+			position: absolute;
+			min-height: 250px;
+		  width: 150%;
+
+			transform-origin: left bottom;
+			transform: rotate(-5deg);
+		}
+
+		@media screen and (max-width: 1000px){
+			.divide{
+				min-height: 100px;
+			}
 		}

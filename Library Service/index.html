@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Liberation Library</title>
-  
+
   <!--Fonts in use-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
+
   <!--MyStylesheet-->
   <link href="./css/style.css" rel="stylesheet" type="text/css">
-  
+
 </head>
 <body>
 	<div class="hero">
-	
+
 		<div id="log" class="login">
-			<span class="accent-titleP">Login:</span>
+			<span class="accent-titleB">Login:</span>
 			<form id="input" method="post" action="" style="margin: 0 5% 0;">
 				<input class="text-field" type="text" placeholder="username">
 					<div class="username-hidden">username</div>
@@ -29,13 +29,13 @@
 				</input>
 				<input class="submit" type="submit"></input>
 			</form>
-			<div class="reg-button" onmouseover="reg-little-move">
+			<div class="reg-button">
 				<span class="reg-button-text">Register<span>
 			</div>
 		</div>
-		
+
 		<div id="reg" class="register">
-			<span class="accent-titleP">Register:</span>
+			<span class="accent-titleW">Register:</span>
 			<div class="hide-registry"></div>
 			<form id="input" method="post" action="" style="margin: 0 5% 0;">
 				<input class="text-field" type="text" placeholder="username">
@@ -47,23 +47,23 @@
 				<input  class="submit" type="submit"></input>
 			</form>
 		</div>
-		
+
 	</div>
-	
+
 	<div class="hosting">
 		<div class="shoutout">
 			<div class="shoutout-content">
-				<p style="color: white; font-size: 100px;">LOGO</p>
+				<h3 class="accent-titleBl">LOGO</h3>
 			</div>
 			<!--end shoutout-content-->
 			<div class="top-books">
-			
+
 				<div class="top-books-content">
 					<div class="head">
-					<span class="accent-titleB">Top Books:</span>
+					<span class="accent-titleBl">Top Books:</span>
 					<p>Fall into a world of the mystical and lovely with these hand picked tales selected by our finest literary connoisseur.</p>
 					</div>
-					
+
 					<div class="tail">
 					<div class="blocks">
 						<div class="info">
@@ -92,34 +92,39 @@
 				</div>
 				<!--end top-books-content-->
 				</div>
-				<div class="rand-books">
-					<div class="rand-books-content">
-						<div class="head">
-							<span class="accent-titleO">Random Selection:</span>
-							<p>For those more adventurous than those faint hearted of us, become engrossed by your new favourite
-							author coming straight from those dustier sections of your local library.</p>
-							<div class="surprise-button">
-								<span class="surprise-button-text">Surprise Me!<span>
-							</div>
-						</div>
-					</div>
-					<!--end rand-books-content-->
-				</div>
-				<!--end rand-books-->
+
 			</div>
 			<!--end top-books-->
 		</div>
 		<!--end shoutout-->
 	</div>
 	<!--end hosting-->
-	<div class="footer">
-		<div style="position: absolute;bottom:0;">
-			<a href="file:///C:/Users/Ricky/Desktop/Library%20Services/Library-Service-master/Library%20Service/BookRental.html" >Book Rental</a>
-			<a href="file:///C:/Users/Ricky/Desktop/Library%20Services/Library-Service-master/Library%20Service/Management.html">Management</a>
+
+	<div class="post-hosting">
+		<div class="rand-books">
+			<div class="rand-books-content">
+				<div class="head">
+					<span class="accent-titleBl">Random Selection:</span>
+					<p>For those more adventurous than those faint hearted of us, become engrossed by your new favourite
+					author coming straight from those dustier sections of your local library.</p>
+					<div class="surprise-button">
+						<span class="surprise-button-text">Surprise Me!<span>
+					</div>
+				</div>
+			</div>
+			<!--end rand-books-content-->
 		</div>
+		<!--end rand-books-->
 	</div>
-    <script src="js/index.js"></script>
-	
+  <div class="footer">
+    <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
+      <a href="index.html">Home</a>
+      <a href="BookRental.html">Book Rental</a>
+      <a href="Management.html">Management</a>
+    </div>
+  </div>
+  <script src="js/index.js"></script>
+
 	<script>
 	$(window).ready(function(){
 		$(window).resize(function(){
@@ -130,7 +135,7 @@
 			$("#reg").removeAttr('style');
 			$("#log").removeAttr('style');
 		});
-		
+
 		$(".reg-button").hover(function(){
 					if($(window).width() >= 1000){
 						if($("#reg").position().left <= 75){
@@ -150,7 +155,7 @@
 					}
 					else {
 						if($("#reg").offset().top >= 163.5){
-							$("#reg").animate({top: '238.5px'}, 5, 'swing');
+							$("#reg").animate({top: '233.5px'}, 5, 'swing');
 						}
 					}
 		});
