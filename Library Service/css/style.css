@@ -150,6 +150,7 @@
 			cursor: pointer;
 
 			padding: 10px 32px 10px;
+			margin: 25px 0 0;
 		}
 
 		.reg-button, .surprise-button {
@@ -249,41 +250,29 @@
 			outline: 0; !important;
 		}
 
-		.text-field:focus + .username-hidden {
-			top: 80px;
-			opacity: 1;
-			z-index: 0;
-		}
-
-		.text-field:focus + .password-hidden {
-			top: 155px;
-			opacity: 1;
-			z-index: 0;
-		}
-
-		.username-hidden, .password-hidden {
+		.input-back-text {
 			display: block;
-			position: absolute;
+
+			position: relative;
+
+			opacity: 0;
+			top: -60px;
+			margin-bottom: -40px;
+
+			transition: .2s all ease-in-out;
+			z-index: -1;
 
 			color: #105b94;
 			font-weight: 300;
-
-			z-index: -1;
-			opacity: 0;
 
 			webkits-transition: .3s all ease-in-out;
 			o-transition: .3s all ease-in-out;
 			transition: .3s all ease-in-out;
 		}
 
-		.username-hidden {
-			top: 100px;
-			left: 50px;
-		}
-
-		.password-hidden {
-			top: 180px;
-			left: 50px;
+		.text-field:focus + .input-back-text  {
+			top: -85px;
+			opacity: 1;
 		}
 
 		.hide-registry {
@@ -344,7 +333,7 @@
 			background-image: url("../Photos/greyscale-book-multiple.jpeg");
 			background-attachment: fixed;
 			background-size: cover;
-			background-position: center;
+			background-position: bottom;
 			background-repeat: no-repeat;
 		}
 
@@ -383,6 +372,18 @@
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
+
+			filter: grayscale(50%);
+
+			cursor: pointer;
+
+			transition: .2s all ease-in-out;
+			webkits-transition: .2s all ease-in-out;
+			o-transition: .2s all ease-in-out;
+		}
+
+		.blocks:hover {
+			filter: grayscale(0%);
 		}
 
 		.blocks:nth-child(1){
@@ -522,5 +523,136 @@
 		@media screen and (max-width: 1000px){
 			.divide{
 				min-height: 100px;
+			}
+		}
+
+		/*management*/
+		.hide {
+			height: 0;
+			width: 0;
+		}
+
+		.pull-out {
+			display: block;
+			position: absolute;
+
+			margin: 5% 10% auto;
+
+			min-height: 80%;
+
+			border-radius: 12px;
+			background: #dfe1df;
+
+			overflow: hidden;
+
+			box-shadow: 3px 3px 25px #000;
+		}
+
+		.pull-out-content {
+			display: block;
+			position: absolute;
+
+			margin: 3% 15% auto;
+			min-height: 100%;
+			min-width: 85%;
+		}
+
+		@media screen and (max-width: 1000px){
+			.pull-out-content {
+				margin: 5% 22% auto;
+			}
+		}
+
+		.side-bar {
+			display: block;
+			position: absolute;
+
+			margin: 5% 10% auto;
+
+			max-width: 180px;
+
+			/*min-height: 80%;
+
+			border-radius: 12px;
+			background: #dfe1df;
+
+			box-shadow: 3px 3px 25px #000;*/
+		}
+
+		.side-bar .selector {
+			display: block;
+			position: relative;
+			overflow: hidden;
+
+			max-height: 182px;
+			min-height: 182px;
+			max-width: 100%;
+
+			box-sizing: border-box;
+
+			background: #566775;
+
+			cursor: pointer;
+		}
+
+		.selector .label {
+			display: block;
+			position: relative;
+			margin: 30% 5%;
+
+			font-size: 25px;
+			font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+			font-weight: 700;
+			letter-spacing: 1px;
+
+			color: #dfe1df;
+		}
+
+		.manage-book .label, .manage-emp .label{
+			display: block;
+			position: relative;
+			margin: 22.5% 5%;
+
+			font-size: 15px;
+			font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+			font-weight: 600;
+			letter-spacing: 1px;
+
+			color: #dfe1df;
+		}
+
+		.selector:first-child {
+			border-top-right-radius: 12px;
+			border-top-left-radius: 12px;
+		}
+
+
+		.manage-emp:last-child {
+			border-bottom-right-radius: 12px;
+			border-bottom-left-radius: 12px;
+		}
+
+		.side-bar .manage-book, .side-bar .manage-emp {
+			display: block;
+			position: relative;
+
+			box-sizing: border-box;
+
+			width: 100%;
+			background: #393d45;
+
+			overflow: hidden;
+
+			cursor: pointer;
+
+			box-shadow: inset 0px 3px 5px #000;
+		}
+
+		@media screen and (max-width: 1000px){
+			.side-bar{
+				margin: 5% auto auto;
+			}
+			.pull-out{
+				margin: 5% auto auto;
 			}
 		}
