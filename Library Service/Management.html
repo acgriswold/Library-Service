@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Management</title>
+  <!-- replace with 16 x 16 png or other image file -->
+  <link rel="shortcut icon" type="image/png" href="https://static.pexels.com/photos/46274/pexels-photo-46274.jpeg"/>
 
   <!--Fonts in use-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -24,27 +26,27 @@
           Manage books
         </div>
       </div>
-      <div id="add-book" class="manage-book hide" style="background: #393d45">
+      <div id="add-book" class="manage-book" style="background: #393d45">
         <div class="label">
           Add books
         </div>
       </div>
-      <div id="del-book" class="manage-book hide" style="background: #454a54">
+      <div id="del-book" class="manage-book" style="background: #454a54">
         <div class="label">
           Delete books
         </div>
       </div>
-      <div id="mang-emp" class="selector" style="background: #627484">
+      <div id="mang-emp" class="selector"  style="background: #627484;">
         <div class="label">
           Manage employees
         </div>
       </div>
-      <div id="add-emp" class="manage-emp hide" style="background: #393d45">
+      <div id="add-emp" class="manage-emp" style="background: #393d45">
         <div class="label">
           Add employees
         </div>
       </div>
-      <div id="del-emp" class="manage-emp hide" style="background: #454a54">
+      <div id="del-emp" class="manage-emp" style="background: #454a54">
         <div class="label">
           Delete employees
         </div>
@@ -54,7 +56,7 @@
     <div id="add-pull-book" class="pull-out hide" style="z-index: 1">
       <div class="pull-out-content">
         <div class="accent-titleBl">
-          Add more books:
+          Add more books
         </div>
 
         <form id="input" method="post" action="" style="margin: 0 5% 0;">
@@ -64,9 +66,16 @@
   				<input class="text-field" type="text" placeholder="author">
           <div class="input-back-text">author</div>
 
+          <input class="text-field" type="text" placeholder="publisher">
+          <div class="input-back-text">publisher</div>
+
+          <input class="text-field" type="text" placeholder="publication year">
+          <div class="input-back-text">publication year</div>
+
           <input class="text-field" type="text" placeholder="isbn">
           <div class="input-back-text">isbn</div>
-  				<input  class="submit" type="submit"></input>
+
+  				<input class="submit" type="submit" value="submit"></input>
   			</form>
       </div>
     </div>
@@ -74,18 +83,28 @@
     <div id="del-pull-book" class="pull-out hide" style="z-index: 1">
       <div class="pull-out-content">
         <div class="accent-titleBl">
-          Delete more books:
+          Delete more books
         </div>
 
         <form id="input" method="post" action="" style="margin: 0 5% 0;">
-  				<input class="text-field" type="text" placeholder="title">
+          <input class="text-field" type="text" placeholder="title">
           <div class="input-back-text">title</div>
 
-  				<input class="text-field" type="text" placeholder="author">
+          <input class="text-field" type="text" placeholder="author">
           <div class="input-back-text">author</div>
+
+          <input class="text-field" type="text" placeholder="publisher">
+          <div class="input-back-text">publisher</div>
+
+          <input class="text-field" type="text" placeholder="publication year">
+          <div class="input-back-text">publication year</div>
 
           <input class="text-field" type="text" placeholder="isbn">
           <div class="input-back-text">isbn</div>
+
+          <input class="text-field" type="text" placeholder="book id">
+          <div class="input-back-text">book id</div>
+
   				<input  class="submit" type="submit" value="delete"></input>
   			</form>
       </div>
@@ -94,19 +113,23 @@
     <div id="add-pull-emp" class="pull-out hide" style="z-index: 1">
       <div class="pull-out-content">
         <div class="accent-titleBl">
-          Add employees:
+          Add employees
         </div>
 
         <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="name">
-          <div class="input-back-text">name</div>
-
           <input class="text-field" type="text" placeholder="employee id">
           <div class="input-back-text">employee id</div>
 
+          <input class="text-field" type="text" placeholder="name">
+          <div class="input-back-text">name</div>
+
+          <input class="text-field" type="text" placeholder="position">
+          <div class="input-back-text">position</div>
+
           <input class="text-field" type="text" placeholder="ssn">
           <div class="input-back-text">ssn</div>
-          <input  class="submit" type="submit"></input>
+
+          <input  class="submit" type="submit" value="submit"></input>
         </form>
       </div>
     </div>
@@ -114,12 +137,12 @@
     <div id="del-pull-emp" class="pull-out hide" style="z-index: 1">
       <div class="pull-out-content">
         <div class="accent-titleBl">
-          Delete employees:
+          Delete employees
         </div>
 
         <form id="input" method="post" action="" style="margin: 0 5% 0;">
           <input class="text-field" type="text" placeholder="name">
-          <div class="input-back-text">name</div>
+          <div class="input-back-text ">name</div>
 
           <input class="text-field" type="text" placeholder="employee id">
           <div class="input-back-text">employee id</div>
@@ -134,12 +157,13 @@
   </div>
   <!--pull outs end-->
 
-  <div class="footer" style="height: 450px;z-index: 0;">
+  <div class="footer" style="height: 450px; z-index: 0;">
     <div class="divide" style="background: #9aadc2;"></div>
     <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
       <a href="index.html">Home</a>
       <a href="BookRental.html">Book Rental</a>
       <a href="Management.html">Management</a>
+      <a href="UserPage.html">User Profile</a>
     </div>
   </div>
 
@@ -190,9 +214,11 @@
 
     $("#mang-emp").on("click", function(){
         if($(".manage-emp").hasClass('hide')) {
+          $(this).animate({borderBottomLeftRadius: 0, borderBottomRightRadius: 0}, 200, "swing");
           $(".manage-emp").animate({height:100},500).removeClass('hide');
         } else {
           $(".manage-emp").animate({height:0},250).addClass('hide');
+          $(this).animate({borderBottomLeftRadius: 12, borderBottomRightRadius: 12}, 200, "swing");
         }
 		});
 
@@ -261,5 +287,17 @@
   });
 });
 	</script>
+
+  <script>
+   $('form').submit(function() {
+     var failed = false;
+      $(this).find('input[type!=hidden]').each(function(){
+          if(!$(this).val()) { failed = true; $(this).addClass('error'); $(this).next('.input-back-text').addClass('error show');}
+          else{$(this).removeClass('error'); $(this).next('.input-back-text').removeClass('error show');}
+      });
+
+     if(failed) {return false;}
+   });
+ </script>
 </body>
 </html>

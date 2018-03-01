@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Liberation Library</title>
+  <!-- replace with 16 x 16 png or other image file -->
+  <link rel="shortcut icon" type="image/png" href="https://static.pexels.com/photos/46274/pexels-photo-46274.jpeg"/>
 
   <!--Fonts in use-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -16,34 +18,54 @@
 
 </head>
 <body>
+  <div class="overlay">
+    <div id="emp-verif" class="forms">
+      <div id="hide-overlay" class="hide-registry">
+        <div></div>
+        <div></div>
+      </div>
+      <span class="accent-titleB">Employee Login:</span>
+      <form id="emp-login" method="post" action="" style="margin: 0 5% 0;">
+        <input id="username" class="text-field" type="text" placeholder="username">
+          <div class="input-back-text">username</div>
+        </input>
+        <input id="password" class="text-field" type="password" placeholder="password">
+          <div class="input-back-text">password</div>
+        </input>
+        <input class="submit" type="submit" value="submit"></input>
+      </form>
+    </div>
+  </div>
 
 	<div class="hero">
-
-		<div id="log" class="login">
+		<div id="log" class="forms">
 			<span class="accent-titleB">Login:</span>
-			<form id="input" method="post" action="" style="margin: 0 5% 0;">
-				<input class="text-field" type="text" placeholder="username">
+			<form id="login" method="post" action="" style="margin: 0 5% 0;">
+				<input id="username" class="text-field" type="text" placeholder="username">
 					<div class="input-back-text">username</div>
 				</input>
-				<input class="text-field" type="password" placeholder="password">
+				<input id="password" class="text-field" type="password" placeholder="password">
 					<div class="input-back-text">password</div>
 				</input>
-				<input class="submit" type="submit"></input>
+				<input class="submit" type="submit" value="submit"></input>
 			</form>
 			<div class="reg-button">
 				<span class="reg-button-text">Register<span>
 			</div>
 		</div>
 
-		<div id="reg" class="register">
+		<div id="reg" class="forms">
 			<span class="accent-titleW">Register:</span>
-			<div class="hide-registry"></div>
-			<form id="input" method="post" action="" style="margin: 0 5% 0;">
-				<input class="text-field" type="text" placeholder="username">
+			<div id="hide-registry" class="hide-registry">
+        <div></div>
+        <div></div>
+      </div>
+			<form id="register" method="post" action="" style="margin: 0 5% 0;">
+				<input id="username" class="text-field" type="text" placeholder="username">
 					<div class="input-back-text">username</div>
-				<input class="text-field" type="password" placeholder="password">
+				<input id="password" class="text-field" type="password" placeholder="password">
 					<div class="input-back-text">password</div>
-				<input  class="submit" type="submit"></input>
+				<input  class="submit" type="submit" value="submit"></input>
 			</form>
 		</div>
 
@@ -64,7 +86,8 @@
 					</div>
 
 				<div class="tail">
-					<div class="blocks" onclick="dis-info'">
+					<div class="blocks">
+            <div class="top-rated"></div>
 						<div class="info">
 							<div class="accent-titleW">Title</div>
 							<div class="description">this is a generic description of a fake book that is not actually in our database<br><br><br></div>
@@ -120,19 +143,32 @@
       <a href="index.html">Home</a>
       <a href="BookRental.html">Book Rental</a>
       <a href="Management.html">Management</a>
+      <a href="UserPage.html">User Profile</a>
     </div>
   </div>
   <script src="js/index.js"></script>
 
+  <!-- form animation handling -->
 	<script>
 	$(window).ready(function(){
 		$(window).resize(function(){
 			$("#reg").removeAttr('style');
 			$("#log").removeAttr('style');
 		});
-		$(".hide-registry").click(function(){
+
+		$("#hide-registry").click(function(){
 			$("#reg").removeAttr('style');
 			$("#log").removeAttr('style');
+		});
+
+    $("#hide-overlay").click(function(){
+      $(".overlay").animate({opacity: 0}, 250, "swing");
+      setTimeout(function(){$(".overlay").css("display", "none");}, 250);
+      $(".overlay").find("form").find("input[type!=submit]").each(function(){
+        $(this).removeClass('error');
+        $(this).next('.input-back-text').removeClass('error show');
+        $(this).val('');
+      });
 		});
 
 		$(".reg-button").hover(function(){
@@ -170,7 +206,159 @@
 				$("#log").animate({top: '1000px'}, 500, 'swing');
 			}
 		});
+
+    $(".blocks").click(function(){
+      $(".overlay").css("display", "block");
+      $(".overlay").animate({opacity: 1}, 250, "swing");
+    });
+
+    $(".surprise-button").click(function(){
+      $(".overlay").css("display", "block");
+      $(".overlay").animate({opacity: 1}, 250, "swing");
+    });
 	});
 	</script>
+
+  <!-- form varification handling -->
+  <script>
+    $("form").submit(function() {
+      /*login form*/
+      if($(this).prop('id') == 'login'){
+        var failed = false;
+        var is_verif_user = false;
+        var is_verif_pass = false;
+
+        $(this).find('input[type!=hidden]').each(function(){
+          /*checking login credentials (will be compared to database)*/
+          if(($(this).val() == 'admin' && $(this).prop('id') == 'username')){
+            is_verif_user = true;
+          }
+          /*checking for unkown users*/
+          else if(!($(this).val() == 'admin') && $(this).prop('id') == 'username') {
+            failed = true;
+            alert('Username is not found in our records');
+          }
+          /*checking for corresponding password*/
+          if(($(this).val() == 'test123' && $(this).prop('id') == 'password')) {
+            is_verif_pass = true;
+          }
+          else {
+            failed = true;
+          }
+
+          /*checking for empty parameters*/
+          if(!$(this).val()) {
+            failed = true;
+            $(this).addClass('error');
+            $(this).next('.input-back-text').addClass('error show');
+          }
+          /*return to clean slate*/
+          else {
+            $(this).removeClass('error');
+            $(this).next('.input-back-text').removeClass('error show');
+          }
+        });
+
+        /*login successful*/
+        if (is_verif_user && is_verif_pass) {
+          alert('Admin-login successful');
+          return true;
+        }
+        /*login failure*/
+        else if(failed) {
+          if(is_verif_user){
+            alert('Username or password do not match our records');
+          }
+          return false;
+        }
+    }
+
+    /*registration form*/
+    else if($(this).prop('id') == 'register') {
+      var failed = false;
+
+      $(this).find('input[type!=hidden]').each(function(){
+        /*checking for empty parameters*/
+        if(!$(this).val() ) {
+          failed = true;
+          $(this).addClass('error');
+          $(this).next('.input-back-text').addClass('error show');
+        }
+        /*return to clean slate*/
+        else{
+          $(this).removeClass('error');
+          $(this).next('.input-back-text').removeClass('error show');
+        }
+        /*checking for taken accounts*/
+        if(($(this).val() == 'admin' && $(this).prop('id') == 'username')){
+          failed=true;
+          $(this).addClass('error');
+          $(this).next('.input-back-text').addClass('error show');
+          alert('Username is unavailable');
+        }
+      });
+
+      /*register failure*/
+      if(failed) {
+        return false;
+      }
+      else {
+        /*add to database*/
+      }
+    }
+
+    /*emp-login form*/
+    if($(this).prop('id') == 'emp-login'){
+      var failed = false;
+      var is_verif_user = false;
+      var is_verif_pass = false;
+
+      $(this).find('input[type!=hidden]').each(function(){
+        /*checking login credentials (will be compared to database)*/
+        if(($(this).val() == 'admin' && $(this).prop('id') == 'username')){
+          is_verif_user = true;
+        }
+        /*checking for unkown users*/
+        else if(!($(this).val() == 'admin') && $(this).prop('id') == 'username') {
+          failed = true;
+          alert('Username is not found in our records');
+        }
+        /*checking for corresponding password*/
+        if(($(this).val() == 'test123' && $(this).prop('id') == 'password')) {
+          is_verif_pass = true;
+        }
+        else {
+          failed = true;
+        }
+
+        /*checking for empty parameters*/
+        if(!$(this).val()) {
+          failed = true;
+          $(this).addClass('error');
+          $(this).next('.input-back-text').addClass('error show');
+        }
+        /*return to clean slate*/
+        else {
+          $(this).removeClass('error');
+          $(this).next('.input-back-text').removeClass('error show');
+        }
+      });
+
+      /*login successful*/
+      if (is_verif_user && is_verif_pass) {
+        alert('Admin-login successful\n\nEnjoy your book!');
+        return true;
+      }
+      /*login failure*/
+      else if(failed) {
+        if(is_verif_user){
+          alert('Username or password do not match our records');
+        }
+        return false;
+      }
+    }
+  });
+</script>
+<!-- preselected book handling -->
 </body>
 </html>
