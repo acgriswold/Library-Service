@@ -63,8 +63,10 @@
 			<form id="register" method="post" action="" style="margin: 0 5% 0;">
 				<input id="username" class="text-field" type="text" placeholder="username">
 					<div class="input-back-text">username</div>
-				<input id="password" class="text-field" type="password" placeholder="password">
+				<input id="pass" class="text-field" type="password" placeholder="password">
 					<div class="input-back-text">password</div>
+          <input id="pass-confirm" class="text-field" type="password" placeholder="confirm password">
+  					<div class="input-back-text">confirm password</div>
 				<input  class="submit" type="submit" value="submit"></input>
 			</form>
 		</div>
@@ -296,6 +298,12 @@
           $(this).next('.input-back-text').addClass('error show');
           alert('Username is unavailable');
         }
+      });
+      /*checking for matching passwords*/
+      $(this).find('input[type=password]').each(function(){
+        if($(this).prop('id') == 'pass') {orig = $(this).val();}
+        else if(!($(this).val() == orig)) { alert('passwords do not match'); failed = true; $(this).addClass('error'); $(this).next('.input-back-text').addClass('error show');}
+        else{$(this).removeClass('error'); $(this).next('.input-back-text').removeClass('error show');}
       });
 
       /*register failure*/

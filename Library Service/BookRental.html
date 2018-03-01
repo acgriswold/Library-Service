@@ -18,12 +18,50 @@
 
 </head>
 <body>
-  <div class="hero" style="background-image: url('Photos/greyscale-book-leaf.jpeg');">
-    <h1>Book Rental</h1>
+  <div class="hero" style="background-image: url('Photos/coffee-book.jpeg');">
+    <!--<h1>Book Rental</h1> -->
+    <!-- side-bar start -->
+    <div class="side-bar" style="z-index: 2">
+      <div id="search-book" class="selector" style="background: #bcc3bc; border-radius: 12px; max-height: 141px;	min-height: 141px;">
+        <div class="label" style="margin: 20% 5%;">
+          Search Books
+        </div>
+      </div>
+    </div>
+    <!-- side-bar end -->
+
+    <!-- pull-out start -->
+    <div id="search-pull-book" class="pull-out hide" style="z-index: 1;">
+      <div class="pull-out-content">
+        <div class="accent-titleBl">
+          Search Books
+        </div>
+
+        <form id="input" method="post" action="" style="margin: 0 5% 0;">
+          <input class="text-field" type="text" placeholder="title">
+          <div class="input-back-text">title</div>
+
+          <input class="text-field" type="text" placeholder="author">
+          <div class="input-back-text">author</div>
+
+          <input id="new" class="text-field" type="text" placeholder="publisher">
+          <div class="input-back-text">publisher</div>
+
+          <input id="new" class="text-field" type="text" placeholder="publication year">
+          <div class="input-back-text">publication year</div>
+
+          <input id="new" class="text-field" type="text" placeholder="isbn">
+          <div class="input-back-text">isbn</div>
+
+          <input class="submit" type="submit" value="submit"></input>
+  			</form>
+      </div>
+    </div>
+    <!-- pull-out end -->
   </div>
 
   <div class="footer" style="height: 450px; z-index: 0;">
-    <div class="divide" style="background: #566775;"></div>
+    <div class="divide" style="background: #c9cfc9;"></div>
     <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
       <a href="index.html">Home</a>
       <a href="BookRental.html">Book Rental</a>
@@ -31,5 +69,57 @@
       <a href="UserPage.html">User Profile</a>
     </div>
   </div>
+  <script>
+  $(window).ready(function(){
+    $(window).resize(function(){
+      if(!$("#search-pull-book").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#search-pull-book").animate({width: "80%"},150).removeClass('hide');
+        }
+        else{
+          $("#search-pull-book").animate({width: "100%"},150).removeClass('hide');
+        }
+      }
+    });
+
+    $("#search-book").click(function(){
+      if($("#search-pull-book").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#search-pull-book").animate({width: "80%"},500).removeClass('hide');
+        }
+        else{
+          $("#search-pull-book").animate({width: "100%"},500).removeClass('hide');
+        }
+      } else {
+        $("#search-pull-book").animate({width:0},250).addClass('hide');
+      }
+    });
+
+  });
+  </script>
+  <script>
+   $('form').submit(function() {
+     var failed = false;
+     var empty_fields = 0;
+     var orig;
+
+     /* field check */
+     $(this).find('input[type!=hidden]').each(function(){
+       if(!($(this).val())) {empty_fields=empty_fields+1;}
+     });
+     /* no fields entered */
+     if(empty_fields >= 4) {failed = true;}
+     else{
+       /* password check */
+        $(this).find('input[type=password]').each(function(){
+          if($(this).prop('id') == 'new') {orig = $(this).val();}
+          else if(!($(this).val() == orig)) { alert('passwords do not match'); failed = true; $(this).addClass('error'); $(this).next('.input-back-text').addClass('error show');}
+          else{$(this).removeClass('error'); $(this).next('.input-back-text').removeClass('error show');}
+        });
+      }
+
+     if(failed) {return false;}
+   });
+ </script>
 </body>
 </html>
