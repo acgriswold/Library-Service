@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <?php session_start();
+    $_SESSION['id'] = 49;
+  ?>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>User Page</title>
   <!-- replace with 16 x 16 png or other image file -->
   <link rel="shortcut icon" type="image/png" href="https://static.pexels.com/photos/46274/pexels-photo-46274.jpeg"/>
@@ -53,12 +59,7 @@
         <div class="accent-titleBl">
           My Profile
         </div>
-
-        <div class="details">
-          <div class="field">Username: tempUser</div>
-          <div class="field">Name: tempName</div>
-          <div class="field">Password:  &bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div>
-          <div class="field">Account Ranking: base-user</div>
+        <div id="profile-details">
         </div>
       </div>
     </div>
@@ -69,43 +70,10 @@
           My Rented Books
         </div>
 
-        <div class="details" style="height: 525px; overflow-y: scroll;">
+        <div id="my-books" class="details" style="height: 525px; overflow-y: scroll;">
           <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
           </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
-          <div class="field">
-            <div class="book-details">Title/AuthorFirst AuthorLast/Publisher/isbn</div>
-            <div class="return" style="display: inline-block"><a>return book?</a></div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -116,14 +84,14 @@
           Modify my Account
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="edit username">
+        <form id="input" method="post" action="php/update_account.php" style="margin: 0 5% 0;">
+          <input name="username" class="text-field" type="text" placeholder="edit username">
           <div class="input-back-text">edit username</div>
 
-          <input class="text-field" type="text" placeholder="edit name">
+          <input name="name" class="text-field" type="text" placeholder="edit name">
           <div class="input-back-text">edit name</div>
 
-          <input id="new" class="text-field" type="password" placeholder="edit password">
+          <input id="new" name="new-pass" class="text-field" type="password" placeholder="edit password">
           <div class="input-back-text">edit password</div>
 
           <input id="confirmation" class="text-field" type="password" placeholder="confirm new password">
@@ -263,7 +231,17 @@
       }
 
      if(failed) {return false;}
+     /* passed will continue */
+
    });
+ </script>
+ <!-- AJAX queries -->
+ <script>
+ $(window).ready(function(){
+   $("#my-books").load("php/retrieve_books.php");
+   $("#profile-details").load("php/retrieve_profile.php");
+ });
+
  </script>
 </body>
 </html>

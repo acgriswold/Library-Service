@@ -650,12 +650,6 @@
 		min-width: 85%;
 	}
 
-	@media screen and (max-width: 1000px){
-		.pull-out-content {
-			margin: 5% 22% auto;
-		}
-	}
-
 	.side-bar {
 		display: block;
 		position: absolute;
@@ -747,6 +741,9 @@
 		}
 		.pull-out{
 			margin: 5% auto auto;
+		}
+		.pull-out-content {
+			margin: 5% 22% auto;
 		}
 	}
 
