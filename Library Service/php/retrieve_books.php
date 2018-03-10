@@ -7,20 +7,21 @@
 <?php
 /*book retrieval*/
 
-$sql = "Select books.title, books.author, books.publisher, books.year_published, books.isbn from rental, books where rental.book_id = books.book_id and customer_id='".$_SESSION['id']."';";
+$sql = "Select books.title, books.first_name, books.last_name, books.publisher, books.year_published, books.isbn from rented, books where rented.book_id = books.book_id and user_id='".$_SESSION['id']."';";
 $result = mysqli_query($db, $sql);
 if(mysqli_num_rows($result) > 0){
 	while($row = mysqli_fetch_assoc($result)){
 		$title = ($row["title"]);
-    $author = ($row["author"]);
-    $publisher = ($row["publisher"]);
-    $year_published = ($row["year_published"]);
-    $isbn = ($row["isbn"]);
+        $first_name = ($row["first_name"]);
+    	$last_name = ($row["last_name"]);
+        $publisher = ($row["publisher"]);
+        $year_published = ($row["year_published"]);
+        $isbn = ($row["isbn"]);
 
-    echo "<div class='field'>
-            <div class='book-details'>$title/$author/$publisher/$year_published/$isbn</div>
-            <div class='return' style='display: inline-block'><a>return book?</a></div>
-          </div>";
+        echo "<div class='field'>
+                <div class='book-details'>$title/$first_name $last_name/$publisher/$year_published/$isbn</div>
+                <div class='return' style='display: inline-block'><a>return book?</a></div>
+              </div>";
 	}
 }
 
