@@ -62,20 +62,20 @@
           Add more books
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
+        <form id="input" method="post" action="php/add_book.php" style="margin: 0 5% 0;">
   				<input class="text-field" type="text" placeholder="title">
-          <div class="input-back-text">title</div>
+          <div name="title" class="input-back-text">title</div>
 
   				<input class="text-field" type="text" placeholder="author">
-          <div class="input-back-text">author</div>
+          <div name="author" class="input-back-text">author</div>
 
-          <input class="text-field" type="text" placeholder="publisher">
+          <input name="publisher" class="text-field" type="text" placeholder="publisher">
           <div class="input-back-text">publisher</div>
 
-          <input class="text-field" type="text" placeholder="publication year">
+          <input name="publication year" class="text-field" type="text" placeholder="publication year">
           <div class="input-back-text">publication year</div>
 
-          <input class="text-field" type="text" placeholder="isbn">
+          <input name="isbn" class="text-field" type="text" placeholder="isbn">
           <div class="input-back-text">isbn</div>
 
   				<input class="submit" type="submit" value="submit"></input>
@@ -89,23 +89,23 @@
           Delete more books
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="title">
+        <form id="input" method="post" action="php/delete_book.php" style="margin: 0 5% 0;">
+          <input name="title" class="text-field" type="text" placeholder="title">
           <div class="input-back-text">title</div>
 
-          <input class="text-field" type="text" placeholder="author">
+          <input name="author" class="text-field" type="text" placeholder="author">
           <div class="input-back-text">author</div>
 
-          <input class="text-field" type="text" placeholder="publisher">
+          <input name="publisher" class="text-field" type="text" placeholder="publisher">
           <div class="input-back-text">publisher</div>
 
-          <input class="text-field" type="text" placeholder="publication year">
+          <input name="publication year" class="text-field" type="text" placeholder="publication year">
           <div class="input-back-text">publication year</div>
 
-          <input class="text-field" type="text" placeholder="isbn">
+          <input name="isbn" class="text-field" type="text" placeholder="isbn">
           <div class="input-back-text">isbn</div>
 
-          <input class="text-field" type="text" placeholder="book id">
+          <input name="book id" class="text-field" type="text" placeholder="book id">
           <div class="input-back-text">book id</div>
 
   				<input  class="submit" type="submit" value="delete"></input>
@@ -119,18 +119,23 @@
           Add employees
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="employee id">
-          <div class="input-back-text">employee id</div>
+        <form id="input" method="post" action="php/delete_book.php" style="margin: 0 5% 0;">
+          <input name="username" class="text-field" type="text" placeholder="Username">
+          <div class="input-back-text">Username</div>
+		  
+		  <input name="password" class="text-field" type="text" placeholder="Password">
+          <div class="input-back-text">Password</div>
 
-          <input class="text-field" type="text" placeholder="name">
-          <div class="input-back-text">name</div>
+          <input name="first_name" class="text-field" type="text" placeholder="First Name">
+          <div class="input-back-text">First Name</div>
+		  
+		  <input name="last_name" class="text-field" type="text" placeholder="Last Name">
+          <div class="input-back-text">Last Name</div>
+		  
 
-          <input class="text-field" type="text" placeholder="position">
-          <div class="input-back-text">position</div>
+          <input name="position" class="text-field" type="text" placeholder="Position">
+          <div class="input-back-text">Position</div>
 
-          <input class="text-field" type="text" placeholder="ssn">
-          <div class="input-back-text">ssn</div>
 
           <input  class="submit" type="submit" value="submit"></input>
         </form>
@@ -144,14 +149,22 @@
         </div>
 
         <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="name">
-          <div class="input-back-text ">name</div>
+          <input name="username" class="text-field" type="text" placeholder="Username">
+          <div class="input-back-text">Username</div>
+		  
+		  <input name="password" class="text-field" type="text" placeholder="Password">
+          <div class="input-back-text">Password</div>
 
-          <input class="text-field" type="text" placeholder="employee id">
-          <div class="input-back-text">employee id</div>
+          <input name="first_name" class="text-field" type="text" placeholder="First Name">
+          <div class="input-back-text">First Name</div>
+		  
+		  <input name="last_name" class="text-field" type="text" placeholder="Last Name">
+          <div class="input-back-text">Last Name</div>
+		  
 
-          <input class="text-field" type="text" placeholder="ssn">
-          <div class="input-back-text">ssn</div>
+          <input name="position" class="text-field" type="text" placeholder="Position">
+          <div class="input-back-text">Position</div>
+		  
           <input  class="submit" type="submit" value="delete"></input>
         </form>
       </div>

@@ -643,7 +643,7 @@
 
 	.pull-out-content {
 		display: block;
-		position: relative;
+		position: absolute;
 
 		margin: 3% 15% auto;
 		min-height: 100%;
@@ -804,5 +804,3 @@
 			width: 80%;
 		}
 	}
-
-	/*rent & return buttons*/
