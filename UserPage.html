@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <?php session_start(); ?>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>User Page</title>
+  <!-- replace with 16 x 16 png or other image file -->
+  <link rel="shortcut icon" type="image/png" href="https://static.pexels.com/photos/46274/pexels-photo-46274.jpeg"/>
+
+  <!--Fonts in use-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!--MyStylesheet-->
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  <div class="hero" style="background-image: url('Photos/plant-book.jpeg');">
+    <!-- side-bar start -->
+    <div class="side-bar" style="z-index: 2">
+      <div id="user-account" class="selector" style="background: #caac91; border-radius: 12px; max-height: 141px;	min-height: 141px;">
+        <div class="label" style="margin: 20% 5%;">
+          My Account
+        </div>
+      </div>
+
+      <div id="user-profile" class="manage-emp hide" style="background: #d9d9d9;">
+        <div class="label" style="color: black;">
+          My Profile
+        </div>
+      </div>
+
+      <div id="user-books" class="manage-emp hide" style="background: #cccccc;">
+        <div class="label" style="color: black;">
+          My Books
+        </div>
+      </div>
+
+      <div id="user-mod" class="manage-emp hide" style="background: #d9d9d9;">
+        <div class="label" style="color: black;">
+          Modify My Account
+        </div>
+      </div>
+    </div>
+    <!-- side-bar end -->
+
+    <!-- pull-out start -->
+    <div id="user-pull-profile" class="pull-out hide" style="z-index: 1;">
+      <div class="pull-out-content">
+        <div class="accent-titleBl">
+          My Profile
+        </div>
+        <div id="profile-details">
+        </div>
+      </div>
+    </div>
+
+    <div id="user-pull-books" class="pull-out hide" style="z-index: 1;">
+      <div class="pull-out-content">
+        <div class="accent-titleBl">
+          My Rented Books
+        </div>
+
+        <div id="my-books" class="details" style="height: 525px; overflow-y: scroll;">
+          <div class="field">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="user-pull-mod" class="pull-out hide" style="z-index: 1;">
+      <div class="pull-out-content">
+        <div class="accent-titleBl">
+          Modify my Account
+        </div>
+
+        <form id="input" method="post" action="php/update_account.php" style="margin: 0 5% 0;">
+          <input name="username" class="text-field" type="text" placeholder="edit username">
+          <div class="input-back-text">edit username</div>
+
+          <input name="name" class="text-field" type="text" placeholder="edit name">
+          <div class="input-back-text">edit name</div>
+
+          <input id="new" name="new-pass" class="text-field" type="password" placeholder="edit password">
+          <div class="input-back-text">edit password</div>
+
+          <input id="confirmation" class="text-field" type="password" placeholder="confirm new password">
+          <div class="input-back-text">confirm new password</div>
+
+          <input  class="submit" type="submit" value="submit"></input>
+        </form>
+      </div>
+    </div>
+    <!-- pull-out end -->
+  </div>
+
+  <div class="footer" style="height: 450px; z-index: 0;">
+    <div class="divide" style="background: #caac91;"></div>
+    <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
+      <a href="index.html">Home</a>
+      <a href="BookRental.html">Book Rental</a>
+      <a href="Management.html">Management</a>
+      <a href="UserPage.html">User Profile</a>
+    </div>
+  </div>
+
+  <script>
+  $(window).ready(function(){
+    $(window).resize(function(){
+      if(!$("#user-pull-profile").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#user-pull-profile").animate({width: "80%"},150).removeClass('hide');
+        }
+        else{
+          $("#user-pull-profile").animate({width: "100%"},150).removeClass('hide');
+        }
+      }
+      if(!$("#user-pull-books").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#user-pull-books").animate({width: "80%"},150).removeClass('hide');
+        }
+        else{
+          $("#user-pull-books").animate({width: "100%"},150).removeClass('hide');
+        }
+      }
+      if(!$("#user-pull-mod").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#user-pull-mod").animate({width: "80%"},150).removeClass('hide');
+        }
+        else{
+          $("#user-pull-mod").animate({width: "100%"},150).removeClass('hide');
+        }
+      }
+    });
+
+    $("#user-account").click(function(){
+      if($(".manage-emp").hasClass('hide')) {
+        $(this).animate({borderBottomLeftRadius: 0, borderBottomRightRadius: 0}, 200, "swing");
+        $(".manage-emp").animate({height:100},500).removeClass('hide');
+        if($(window).width() >= 1000){
+          $("#user-pull-profile").animate({width: "80%"},500).removeClass('hide');
+        }
+        else{
+          $("#user-pull-profile").animate({width: "100%"},500).removeClass('hide');
+        }
+      } else {
+        $(".manage-emp").animate({height:0},250).addClass('hide');
+        $(this).animate({borderBottomLeftRadius: 12, borderBottomRightRadius: 12}, 200, "swing");
+      }
+    });
+
+    $("#user-profile").click(function(){
+      $("#user-pull-books").animate({width:0},250).addClass('hide');
+      $("#user-pull-mod").animate({width:0},250).addClass('hide');
+
+      if($("#user-pull-profile").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#user-pull-profile").animate({width: "80%"},500).removeClass('hide');
+        }
+        else{
+          $("#user-pull-profile").animate({width: "100%"},500).removeClass('hide');
+        }
+      } else {
+        $("#user-pull-profile").animate({width:0},250).addClass('hide');
+      }
+    });
+
+    $("#user-books").click(function(){
+      $("#user-pull-mod").animate({width:0},250).addClass('hide');
+      $("#user-pull-profile").animate({width:0},250).addClass('hide');
+
+      if($("#user-pull-books").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#user-pull-books").animate({width: "80%"},500).removeClass('hide');
+        }
+        else{
+          $("#user-pull-books").animate({width: "100%"},500).removeClass('hide');
+        }
+      } else {
+        $("#user-pull-books").animate({width:0},250).addClass('hide');
+      }
+    });
+
+    $("#user-mod").click(function(){
+      $("#user-pull-books").animate({width:0},250).addClass('hide');
+      $("#user-pull-profile").animate({width:0},250).addClass('hide');
+
+      if($("#user-pull-mod").hasClass('hide')) {
+        if($(window).width() >= 1000){
+          $("#user-pull-mod").animate({width: "80%"},500).removeClass('hide');
+        }
+        else{
+          $("#user-pull-mod").animate({width: "100%"},500).removeClass('hide');
+        }
+      } else {
+        $("#user-pull-mod").animate({width:0},250).addClass('hide');
+      }
+    });
+
+  });
+  </script>
+  <script>
+   $('form').submit(function() {
+     var failed = false;
+     var empty_fields = 0;
+     var orig;
+
+     /* field check */
+     $(this).find('input[type!=hidden]').each(function(){
+       if(!($(this).val())) {empty_fields=empty_fields+1;}
+     });
+     /* no fields entered */
+     if(empty_fields >= 4) {failed = true;}
+     else{
+       /* password check */
+        $(this).find('input[type=password]').each(function(){
+          if($(this).prop('id') == 'new') {orig = $(this).val();}
+          else if(!($(this).val() == orig)) { alert('passwords do not match'); failed = true; $(this).addClass('error'); $(this).next('.input-back-text').addClass('error show');}
+          else{$(this).removeClass('error'); $(this).next('.input-back-text').removeClass('error show');}
+        });
+      }
+
+     if(failed) {return false;}
+     /* passed will continue */
+
+   });
+ </script>
+ <!-- AJAX queries -->
+ <script>
+ $(window).ready(function(){
+   $("#my-books").load("php/retrieve_books.php");
+   $("#profile-details").load("php/retrieve_profile.php");
+ });
+
+ </script>
+</body>
+</html>
