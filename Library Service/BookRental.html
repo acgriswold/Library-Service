@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <?php session_start(); ?>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,35 @@
   <!--MyStylesheet-->
   <link href="./css/style.css" rel="stylesheet" type="text/css">
 
+  <style>
+  .rent {
+    background: #105b94;
+    border: 1px solid #105b94;
+    border-radius: 360px;
+
+    color: #dfe1df;
+    font-size: 12px;
+    font-family: Helvetica Neue, Helvetica, Open sans, Arial, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+
+    cursor: pointer;
+
+    padding: 10px 32px 10px;
+    margin: 5px 25px 10px;
+
+    transition: .2s all ease-in-out;
+    webkits-transition: .2s all ease-in-out;
+    o-transition: .2s all ease-in-out;
+  }
+
+  .rent:hover {
+    box-shadow: 3px 3px 15px #000;
+  }
+
+  </style>
 </head>
 <body>
   <div class="hero" style="background-image: url('Photos/coffee-book.jpeg');">
@@ -40,25 +70,29 @@
           Search Books
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="title">
+        <form id="input" method="post" action="php/search_book.php" style="margin: 0 5% 0;">
+          <input id="title" name="title" class="text-field" type="text" placeholder="title">
           <div class="input-back-text">title</div>
 
-          <input class="text-field" type="text" placeholder="author">
+          <input id="author" name="author" class="text-field" type="text" placeholder="author">
           <div class="input-back-text">author</div>
 
-          <input id="new" class="text-field" type="text" placeholder="publisher">
+          <input id="publisher" name="publisher" class="text-field" type="text" placeholder="publisher">
           <div class="input-back-text">publisher</div>
 
-          <input id="new" class="text-field" type="text" placeholder="publication year">
+          <input id="publication-year" name="publication-year" class="text-field" type="text" placeholder="publication year">
           <div class="input-back-text">publication year</div>
 
-          <input id="new" class="text-field" type="text" placeholder="isbn">
+          <input id="isbn" name="isbn" class="text-field" type="text" placeholder="isbn">
           <div class="input-back-text">isbn</div>
 
           <input class="submit" type="submit" value="submit"></input>
   			</form>
+        <div id="results" class="details" style="height: 20vh; overflow-y: scroll; background: #d9d9d9; border-radius: 13px; padding: 5px 7px 2px;">
+          <!-- books load here -->
+        </div>
       </div>
+
     </div>
     <!-- pull-out end -->
   </div>
@@ -74,6 +108,7 @@
   </div>
   <script>
   $(window).ready(function(){
+
     $(window).resize(function(){
       if(!$("#search-pull-book").hasClass('hide')) {
         if($(window).width() >= 1000){
@@ -106,22 +141,29 @@
      var empty_fields = 0;
      var orig;
 
+     var title = "";
+     var author = "";
+     var publisher = "";
+     var publicationy= "";
+     var isbn = "";
+
      /* field check */
      $(this).find('input[type!=hidden]').each(function(){
        if(!($(this).val())) {empty_fields=empty_fields+1;}
+       else{
+         if($(this).prop('id') == 'title') {title=$(this).val();}
+         if($(this).prop('id') == 'author') {author=$(this).val();}
+         if($(this).prop('id') == 'publisher') {publisher=$(this).val();}
+         if($(this).prop('id') == 'publication-year') {publicationy=$(this).val();}
+         if($(this).prop('id') == 'isbn') {isbn=$(this).val();}
+      }
      });
      /* no fields entered */
-     if(empty_fields >= 4) {failed = true;}
-     else{
-       /* password check */
-        $(this).find('input[type=password]').each(function(){
-          if($(this).prop('id') == 'new') {orig = $(this).val();}
-          else if(!($(this).val() == orig)) { alert('passwords do not match'); failed = true; $(this).addClass('error'); $(this).next('.input-back-text').addClass('error show');}
-          else{$(this).removeClass('error'); $(this).next('.input-back-text').removeClass('error show');}
-        });
-      }
+     if(empty_fields >= 5) {failed = true;}
 
      if(failed) {return false;}
+     else{$("#results").load('php/search_book.php', {'title': title, 'author': author, 'publisher': publisher, 'publicationy': publicationy,'isbn': isbn});
+     return false;}
    });
  </script>
 </body>

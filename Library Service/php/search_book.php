@@ -7,7 +7,8 @@
 <?php
 /*book retrieval*/
 
-$sql = "Select books.book_id, books.title, books.first_name, books.last_name, books.publisher, books.year_published, books.isbn from rented, books where rented.book_id = books.book_id and rented.user_id='".$_SESSION['id']."';";
+$sql = "Select * from books where title LIKE '".$_REQUEST['title']."%' and first_name LIKE '".$_REQUEST['author']."%' and publisher LIKE '".$_REQUEST['publisher']."%' and year_published LIKE '".$_REQUEST['publicationy']."%' and isbn LIKE '".$_REQUEST['isbn']."%';";
+
 $result = mysqli_query($db, $sql);
 if(mysqli_num_rows($result) > 0){
 	while($row = mysqli_fetch_assoc($result)){
@@ -19,18 +20,19 @@ if(mysqli_num_rows($result) > 0){
     $year_published = ($row["year_published"]);
     $isbn = ($row["isbn"]);
 
-      echo "<div class='field'>
-              <div class='book-details'>$title/$first_name $last_name/$publisher/$year_published/$isbn</div>
-              <div value='$id' class='return' style='display: inline-block'>return book?</div>
-            </div>";
+    echo "<div class='field'>
+            <div class='book-details'>$title/$first_name $last_name/$publisher/$year_published/$isbn</div>
+            <div class='rent' value='$id'>Rent Book!</div>
+          </div>";
 	}
   echo "<script>
-          $('.return').click(function() {
+          $('.rent').click(function() {
             book_id = $(this).attr('value');
             console.log(book_id);
           });
         </script>";
 }
+
 
 ?>
 <?php mysqli_close($db) /*Closing Connection to Database*/?>
