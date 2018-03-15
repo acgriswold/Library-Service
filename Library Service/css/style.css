@@ -80,7 +80,7 @@
 	.hero {
 		display: block;
 		position: relative;
-		height: 100%;
+		min-height: 100%;
 		width: 100%;
 
 
@@ -643,17 +643,11 @@
 
 	.pull-out-content {
 		display: block;
-		position: absolute;
+		position: relative;
 
 		margin: 3% 15% auto;
 		min-height: 100%;
 		min-width: 85%;
-	}
-
-	@media screen and (max-width: 1000px){
-		.pull-out-content {
-			margin: 5% 22% auto;
-		}
 	}
 
 	.side-bar {
@@ -748,6 +742,9 @@
 		.pull-out{
 			margin: 5% auto auto;
 		}
+		.pull-out-content {
+			margin: 5% 22% auto;
+		}
 	}
 
 	/*Profile*/
@@ -757,7 +754,6 @@
 
 		float: left;
 		width: 91%;
-		margin: 4% auto auto;
 	}
 
 	.field {

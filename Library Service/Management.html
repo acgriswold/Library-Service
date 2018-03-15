@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <?php session_start(); ?>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Management</title>
   <!-- replace with 16 x 16 png or other image file -->
   <link rel="shortcut icon" type="image/png" href="https://static.pexels.com/photos/46274/pexels-photo-46274.jpeg"/>
@@ -18,6 +22,16 @@
 
 </head>
 <body>
+  <!-- for testing purposes alone will be a robot icon to indicated you have logged in on click you will log out -->
+  <div id="session_id_check" style="z-index: 10000000; display: block; position: fixed; background: #9aadc2; border-radius: 13px; right: 100px; top: 50px; max-width: 100px; max-height: 100px; color: white">
+    <?php if(isset($_SESSION['icon']) && isset($_SESSION['id'])){
+        echo '<img src="https://robohash.org/doloremcommodiest.bmp?size=50x50&set=set1"></img>';
+    }
+    if(isset($_SESSION['icon']) && isset($_SESSION['emp_id'])){
+        echo '<img src="https://robohash.org/aliasetquam.jpg?size=50x50&set=set1"></img>';
+    }
+    ?>
+  </div>
   <div class="hero" style="background-image: url('Photos/greyscale-book.jpg');">
     <!--<h1>Management</h1>-->
     <div class="side-bar" style="z-index: 2">
@@ -59,20 +73,20 @@
           Add more books
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-  				<input class="text-field" type="text" placeholder="title">
-          <div class="input-back-text">title</div>
+        <form id="input" method="post" action="php/add_book.php" style="margin: 0 5% 0;">
+  				<input name="title" class="text-field" type="text" placeholder="title">
+          <div  class="input-back-text">title</div>
 
-  				<input class="text-field" type="text" placeholder="author">
-          <div class="input-back-text">author</div>
+  				<input name="author" class="text-field" type="text" placeholder="author">
+          <div  class="input-back-text">author</div>
 
-          <input class="text-field" type="text" placeholder="publisher">
+          <input name="publisher" class="text-field" type="text" placeholder="publisher">
           <div class="input-back-text">publisher</div>
 
-          <input class="text-field" type="text" placeholder="publication year">
+          <input name="publication_year" class="text-field" type="text" placeholder="publication year">
           <div class="input-back-text">publication year</div>
 
-          <input class="text-field" type="text" placeholder="isbn">
+          <input name="isbn" class="text-field" type="text" placeholder="isbn">
           <div class="input-back-text">isbn</div>
 
   				<input class="submit" type="submit" value="submit"></input>
@@ -86,24 +100,21 @@
           Delete more books
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="title">
+        <form id="input" method="post" action="php/delete_book.php" style="margin: 0 5% 0;">
+          <input name="title" class="text-field" type="text" placeholder="title">
           <div class="input-back-text">title</div>
 
-          <input class="text-field" type="text" placeholder="author">
+          <input name="author" class="text-field" type="text" placeholder="author">
           <div class="input-back-text">author</div>
 
-          <input class="text-field" type="text" placeholder="publisher">
+          <input name="publisher" class="text-field" type="text" placeholder="publisher">
           <div class="input-back-text">publisher</div>
 
-          <input class="text-field" type="text" placeholder="publication year">
+          <input name="publication_year" class="text-field" type="text" placeholder="publication year">
           <div class="input-back-text">publication year</div>
 
-          <input class="text-field" type="text" placeholder="isbn">
+          <input name="isbn" class="text-field" type="text" placeholder="isbn">
           <div class="input-back-text">isbn</div>
-
-          <input class="text-field" type="text" placeholder="book id">
-          <div class="input-back-text">book id</div>
 
   				<input  class="submit" type="submit" value="delete"></input>
   			</form>
@@ -116,18 +127,23 @@
           Add employees
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="employee id">
-          <div class="input-back-text">employee id</div>
+        <form id="input" method="post" action="php/add_employee.php" style="margin: 0 5% 0;">
+          <input name="username" class="text-field" type="text" placeholder="Username">
+          <div class="input-back-text">Username</div>
 
-          <input class="text-field" type="text" placeholder="name">
-          <div class="input-back-text">name</div>
+		  <input name="password" class="text-field" type="text" placeholder="Password">
+          <div class="input-back-text">Password</div>
 
-          <input class="text-field" type="text" placeholder="position">
-          <div class="input-back-text">position</div>
+          <input name="first_name" class="text-field" type="text" placeholder="First Name">
+          <div class="input-back-text">First Name</div>
 
-          <input class="text-field" type="text" placeholder="ssn">
-          <div class="input-back-text">ssn</div>
+		  <input name="last_name" class="text-field" type="text" placeholder="Last Name">
+          <div class="input-back-text">Last Name</div>
+
+
+          <input name="position" class="text-field" type="text" placeholder="Position">
+          <div class="input-back-text">Position</div>
+
 
           <input  class="submit" type="submit" value="submit"></input>
         </form>
@@ -140,15 +156,23 @@
           Delete employees
         </div>
 
-        <form id="input" method="post" action="" style="margin: 0 5% 0;">
-          <input class="text-field" type="text" placeholder="name">
-          <div class="input-back-text ">name</div>
+        <form id="input" method="post" action="php/delete_employee.php" style="margin: 0 5% 0;">
+          <input name="username" class="text-field" type="text" placeholder="Username">
+          <div class="input-back-text">Username</div>
 
-          <input class="text-field" type="text" placeholder="employee id">
-          <div class="input-back-text">employee id</div>
+		  <input name="password" class="text-field" type="text" placeholder="Password">
+          <div class="input-back-text">Password</div>
 
-          <input class="text-field" type="text" placeholder="ssn">
-          <div class="input-back-text">ssn</div>
+          <input name="first_name" class="text-field" type="text" placeholder="First Name">
+          <div class="input-back-text">First Name</div>
+
+		  <input name="last_name" class="text-field" type="text" placeholder="Last Name">
+          <div class="input-back-text">Last Name</div>
+
+
+          <input name="position" class="text-field" type="text" placeholder="Position">
+          <div class="input-back-text">Position</div>
+
           <input  class="submit" type="submit" value="delete"></input>
         </form>
       </div>
@@ -157,15 +181,40 @@
   </div>
   <!--pull outs end-->
 
-  <div class="footer" style="height: 450px; z-index: 0;">
-    <div class="divide" style="background: #9aadc2;"></div>
-    <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
-      <a href="index.html">Home</a>
-      <a href="BookRental.html">Book Rental</a>
-      <a href="Management.html">Management</a>
-      <a href="UserPage.html">User Profile</a>
-    </div>
-  </div>
+<!--footers are awful for simplicities sake when dealing different with UI designs per page-->
+  <?php
+    if(isset($_SESSION['emp_id'])){
+      echo '<div class="footer" style="height: 450px; z-index: 0;">
+        <div class="divide" style="background: #9aadc2;"></div>
+                <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
+                  <a href="index.html">Home</a>
+                  <a href="BookRental.html">Book Rental</a>
+                  <a href="Management.html">Management</a>
+                  <a href="UserPage.html">User Profile</a>
+                </div>
+              </div>';
+    }
+    else if(isset($_SESSION['id'])){
+      echo '<div class="footer" style="height: 450px; z-index: 0;">
+        <div class="divide" style="background: #9aadc2;"></div>
+                <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
+                  <a href="index.html">Home</a>
+                  <a href="BookRental.html">Book Rental</a>
+                  <a href="UserPage.html">User Profile</a>
+                </div>
+              </div>';
+    }
+    else{
+        echo '<div class="footer" style="height: 450px; z-index: 0;">
+          <div class="divide" style="background: #9aadc2;"></div>
+                  <div style="position: absolute; bottom:0; background: rgba(244, 247, 250, .85); width: 100%; padding: 10px 25px 10px;">
+                    <a href="index.html">Home</a>
+                    <a href="BookRental.html">Book Rental</a>
+                  </div>
+                </div>';
+      }
+
+  ?>
 
   <script>
 	$(window).ready(function(){
@@ -203,7 +252,6 @@
         }
       }
     });
-
     $("#mang-book").on("click", function(){
         if($(".manage-book").hasClass('hide')) {
           $(".manage-book").animate({height:100},500).removeClass('hide');
@@ -211,7 +259,6 @@
           $(".manage-book").animate({height:0},250).addClass('hide');
         }
 		});
-
     $("#mang-emp").on("click", function(){
         if($(".manage-emp").hasClass('hide')) {
           $(this).animate({borderBottomLeftRadius: 0, borderBottomRightRadius: 0}, 200, "swing");
@@ -221,7 +268,6 @@
           $(this).animate({borderBottomLeftRadius: 12, borderBottomRightRadius: 12}, 200, "swing");
         }
 		});
-
     $("#add-book").on("click", function(){
       $("#del-pull-book").animate({width:0},250).addClass('hide');
       $("#add-pull-emp").animate({width:0},250).addClass('hide');
@@ -237,7 +283,6 @@
           $("#add-pull-book").animate({width:0},250).addClass('hide');
         }
 		});
-
     $("#del-book").on("click", function(){
       $("#add-pull-book").animate({width:0},250).addClass('hide');
       $("#add-pull-emp").animate({width:0},250).addClass('hide');
@@ -253,7 +298,6 @@
           $("#del-pull-book").animate({width:0},250).addClass('hide');
         }
 		});
-
   $("#add-emp").on("click", function(){
     $("#add-pull-book").animate({width:0},250).addClass('hide');
     $("#del-pull-book").animate({width:0},250).addClass('hide');
@@ -269,7 +313,6 @@
         $("#add-pull-emp").animate({width:0},250).addClass('hide');
       }
   });
-
   $("#del-emp").on("click", function(){
     $("#add-pull-book").animate({width:0},250).addClass('hide');
     $("#del-pull-book").animate({width:0},250).addClass('hide');
@@ -295,8 +338,16 @@
           if(!$(this).val()) { failed = true; $(this).addClass('error'); $(this).next('.input-back-text').addClass('error show');}
           else{$(this).removeClass('error'); $(this).next('.input-back-text').removeClass('error show');}
       });
-
      if(failed) {return false;}
+     else{
+       alert("success!");
+     }
+   });
+ </script>
+ <!-- logout handling -->
+ <script>
+   $("#session_id_check").click(function(){
+     $("body").load("php/logout.php");
    });
  </script>
 </body>
