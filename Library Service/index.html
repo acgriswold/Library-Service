@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <?php session_start(); ?>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Liberation Library</title>
   <!-- replace with 16 x 16 png or other image file -->
   <link rel="shortcut icon" type="image/png" href="https://static.pexels.com/photos/46274/pexels-photo-46274.jpeg"/>
@@ -18,6 +22,14 @@
 
 </head>
 <body>
+  <!-- for testing purposes alone will be a robot icon to indicated you have logged in on click you will log out -->
+  <div id="session_id_check" style="z-index: 10000000; display: block; position: fixed; right: 100px; top: 50px; background: black; max-width: 100px; max-height: 100px; color: white">
+    id: <?php if(isset($_SESSION['id'])) echo $_SESSION['id']; ?><br>
+    emp_id: <?php if(isset($_SESSION['emp_id'])) echo $_SESSION['emp_id']; ?><br>
+    failed: <?php if(isset($_SESSION['failed'])) echo $_SESSION['failed']; ?><br>
+    <span style="font-size: 7px;">click here to log out</span>
+  </div>
+
   <div class="overlay">
     <div id="emp-verif" class="forms">
       <div id="hide-overlay" class="hide-registry">
@@ -40,11 +52,11 @@
 	<div class="hero">
 		<div id="log" class="forms">
 			<span class="accent-titleB">Login:</span>
-			<form id="login" method="post" action="" style="margin: 0 5% 0;">
-				<input id="username" class="text-field" type="text" placeholder="username">
+			<form id="login" method="post" action="php/login_account.php" style="margin: 0 5% 0;">
+				<input name="username" id="username" class="text-field" type="text" placeholder="username">
 					<div class="input-back-text">username</div>
 				</input>
-				<input id="password" class="text-field" type="password" placeholder="password">
+				<input name="password" id="password" class="text-field" type="password" placeholder="password">
 					<div class="input-back-text">password</div>
 				</input>
 				<input class="submit" type="submit" value="submit"></input>
@@ -60,10 +72,10 @@
         <div></div>
         <div></div>
       </div>
-			<form id="register" method="post" action="" style="margin: 0 5% 0;">
-				<input id="username" class="text-field" type="text" placeholder="username">
+			<form id="register" method="post" action="php/add_account.php" style="margin: 0 5% 0;">
+				<input name="username" id="username" class="text-field" type="text" placeholder="username">
 					<div class="input-back-text">username</div>
-				<input id="pass" class="text-field" type="password" placeholder="password">
+				<input name="password" id="pass" class="text-field" type="password" placeholder="password">
 					<div class="input-back-text">password</div>
           <input id="pass-confirm" class="text-field" type="password" placeholder="confirm password">
   					<div class="input-back-text">confirm password</div>
@@ -76,7 +88,7 @@
 	<div class="hosting">
 		<div class="shoutout">
 			<div class="shoutout-content">
-				<h3 class="accent-titleBl">LOGO</h3>
+				<h3 class="accent-titleBl ">LOGO</h3>
 			</div>
 			<!--end shoutout-content-->
 			<div class="top-books">
@@ -231,17 +243,18 @@
         var is_verif_pass = false;
 
         $(this).find('input[type!=hidden]').each(function(){
+          
           /*checking login credentials (will be compared to database)*/
-          if(($(this).val() == 'admin' && $(this).prop('id') == 'username')){
+          /*if(($(this).val() == 'admin' && $(this).prop('id') == 'username')){
             is_verif_user = true;
           }
           /*checking for unkown users*/
-          else if(!($(this).val() == 'admin') && $(this).prop('id') == 'username') {
+          /*else if(!($(this).val() == 'admin') && $(this).prop('id') == 'username') {
             failed = true;
             alert('Username is not found in our records');
           }
           /*checking for corresponding password*/
-          if(($(this).val() == 'test123' && $(this).prop('id') == 'password')) {
+          /*if(($(this).val() == 'test123' && $(this).prop('id') == 'password')) {
             is_verif_pass = true;
           }
           else {
@@ -262,15 +275,15 @@
         });
 
         /*login successful*/
-        if (is_verif_user && is_verif_pass) {
+        /*if (is_verif_user && is_verif_pass) {
           alert('Admin-login successful');
           return true;
-        }
+        }*/
         /*login failure*/
-        else if(failed) {
-          if(is_verif_user){
+        if(failed) {
+          /*if(is_verif_user){
             alert('Username or password do not match our records');
-          }
+          }*/
           return false;
         }
     }
@@ -366,6 +379,9 @@
       }
     }
   });
+</script>
+<!-- logout handling -->
+
 </script>
 <!-- preselected book handling -->
 </body>
